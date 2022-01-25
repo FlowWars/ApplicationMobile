@@ -57,6 +57,7 @@ public class CreateBookActivity extends AppCompatActivity {
                 EDITORS.setText("");
                 TITLE.setText("");
                 }
+
         });
 
     }
