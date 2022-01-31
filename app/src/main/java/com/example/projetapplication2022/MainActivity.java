@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,17 +22,24 @@ public class MainActivity extends AppCompatActivity {
         btn_listBook = findViewById(R.id.id_btn_listBook);
         btn_listReader = findViewById(R.id.id_btn_listReader);
 
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null){
+            String title = bundle.getString("cle_title");
+            String author = bundle.getString("cle_author");
+            String editor = bundle.getString("cle_editor");
+            Toast.makeText(this,title + " " + author + " " + editor, Toast.LENGTH_LONG).show();
+        }
     }
 
     public void onClickCreateBook(View view) {
 
-        Intent intent = new Intent(MainActivity.this, CreateBookActivity.class);
+        Intent intent = new Intent(this, CreateBookActivity.class);
         startActivity(intent);
     }
 
     public void onClickCreateReader(View view) {
 
-        Intent intent = new Intent(MainActivity.this, CreateReaderActivity.class);
+        Intent intent = new Intent(this, CreateReaderActivity.class);
         startActivity(intent);
     }
 }

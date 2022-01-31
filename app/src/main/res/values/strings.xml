@@ -5,7 +5,11 @@
     <string name="btn_listBook">Afficher la liste de livre</string>
     <string name="btn_listReader">Afficher la liste de lecteur</string>
     <string name="btn_valid">Valider</string>
+    <string name="btn_quit">Quitter</string>
     <string name="editTextTitle">Titre</string>
     <string name="editTextAuthor">Auteur</string>
     <string name="editTextEditor">Editeur</string>
+    <string name="editTextFirstname">Prenom</string>
+    <string name="editTextLastname">Nom</string>
+    <string name="editTextEmail">Email</string>
 </resources>
