@@ -42,7 +42,7 @@ public class DBHandler extends SQLiteOpenHelper {
         // an sqlite query and we are
         // setting our column names
         // along with their data types.
-        String query = "CREATE TABLE " + TABLE_NAME_LIVRE + " ("
+        String query = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_LIVRE + " ("
                 + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + EDITORS + " TEXT,"
                 + TITLE + " TEXT,"
