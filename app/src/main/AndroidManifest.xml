@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetApplication2022">
-        <activity android:name=".CreateReaderActivity"></activity>
+        <activity android:name=".DisplayListReaderActivity"></activity>
+        <activity android:name=".DisplayListBookActivity" />
+        <activity android:name=".CreateReaderActivity" />
         <activity android:name=".CreateBookActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

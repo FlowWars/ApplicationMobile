@@ -31,12 +31,12 @@ public class CreateBookActivity extends AppCompatActivity {
         editor = edt_editor.getText().toString();
 
         Intent mainActivity = new Intent(this, MainActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("cle_title", title);
-        bundle.putString("cle_author", author);
-        bundle.putString("cle_editor", editor);
+        Bundle bundleBook = new Bundle();
+        bundleBook.putString("cle_title", title);
+        bundleBook.putString("cle_author", author);
+        bundleBook.putString("cle_editor", editor);
 
-        mainActivity.putExtras(bundle);
+        mainActivity.putExtras(bundleBook);
         startActivity(mainActivity);
     }
 }

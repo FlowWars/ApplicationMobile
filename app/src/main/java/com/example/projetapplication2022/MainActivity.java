@@ -10,7 +10,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_createBook, btn_createReader, btn_listBook, btn_listReader;
+    private Button btn_createBook, btn_createReader, btn_listBook, btn_listReader;
+    private DBHandler databaseManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +23,26 @@ public class MainActivity extends AppCompatActivity {
         btn_listBook = findViewById(R.id.id_btn_listBook);
         btn_listReader = findViewById(R.id.id_btn_listReader);
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null){
-            String title = bundle.getString("cle_title");
-            String author = bundle.getString("cle_author");
-            String editor = bundle.getString("cle_editor");
-            Toast.makeText(this,title + " " + author + " " + editor, Toast.LENGTH_LONG).show();
+        databaseManager = new DBHandler(this);
+
+        Bundle bundleBook = getIntent().getExtras();
+        Bundle bundleReader = getIntent().getExtras();
+        if (bundleBook != null){
+            String title = bundleBook.getString("cle_title");
+            String author = bundleBook.getString("cle_author");
+            String editor = bundleBook.getString("cle_editor");
+
+            databaseManager.insertBook(author, editor, title);
         }
+        if (bundleReader != null){
+            String firstname = bundleReader.getString("cle_firstname");
+            String lastname = bundleReader.getString("cle_lastname");
+            String email = bundleReader.getString("cle_email");
+
+            databaseManager.insertReader(firstname, lastname, email);
+        }
+
+        databaseManager.close();
     }
 
     public void onClickCreateBook(View view) {
@@ -40,6 +54,18 @@ public class MainActivity extends AppCompatActivity {
     public void onClickCreateReader(View view) {
 
         Intent intent = new Intent(this, CreateReaderActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickDisplayBook(View view) {
+
+        Intent intent = new Intent(this, DisplayListBookActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickDisplayReader(View view) {
+
+        Intent intent = new Intent(this, DisplayListReaderActivity.class);
         startActivity(intent);
     }
 }
