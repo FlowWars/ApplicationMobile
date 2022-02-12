@@ -6,7 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
+import com.example.projetapplication2022.Book.CreateBookActivity;
+import com.example.projetapplication2022.Book.DisplayListBookActivity;
+import com.example.projetapplication2022.Reader.CreateReaderActivity;
+import com.example.projetapplication2022.Reader.DisplayListReaderActivity;
 
 public class MainActivity extends AppCompatActivity {
 

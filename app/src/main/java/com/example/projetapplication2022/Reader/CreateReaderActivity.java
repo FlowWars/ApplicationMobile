@@ -1,4 +1,4 @@
-package com.example.projetapplication2022;
+package com.example.projetapplication2022.Reader;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import com.example.projetapplication2022.MainActivity;
+import com.example.projetapplication2022.R;
 
 public class CreateReaderActivity extends AppCompatActivity {
 

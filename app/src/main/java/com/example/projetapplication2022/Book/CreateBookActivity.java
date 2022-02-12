@@ -1,4 +1,4 @@
-package com.example.projetapplication2022;
+package com.example.projetapplication2022.Book;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.projetapplication2022.MainActivity;
+import com.example.projetapplication2022.R;
 
 public class CreateBookActivity extends AppCompatActivity {
 

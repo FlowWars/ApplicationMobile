@@ -12,8 +12,10 @@ import androidx.annotation.Nullable;
 public class DBHandler extends SQLiteOpenHelper {
 
     // initialisation des variables
-    // variable du nom de la base de données
+
+    // variable du contexte de l'etat actuel de l'application
     private Context context;
+    // variable du nom de la base de données
     private static final String DB_NAME = "MySQL";
 
     // variable de la version de la base de données
@@ -25,28 +27,28 @@ public class DBHandler extends SQLiteOpenHelper {
     // variable du nom de la table lecteur
     private static final String TABLE_NAME_LECTEUR = "Reader";
 
-    //
+    // variable de la colonne identifiant
     private static final String ID_COL = "id";
 
-    //
+    // variable de la colonne editeur
     private static final String EDITORS = "Editors";
 
-    //
+    // variable de la colonne titre
     private static final String TITLE = "Title";
 
-    //
+    // variable de la colonne auteur
     private static final String AUTHORS = "Authors";
 
-    //
+    // variable de la colonne prenom
     private static final String FIRSTNAME = "Firstname";
 
-    //
+    // variable de la colonne nom
     private static final String LASTNAME = "Lastname";
 
-    //
+    // variable de la colonne email
     private static final String EMAIL = "Email";
 
-    // creating a constructor for our database handler.
+    //
     public DBHandler(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         this.context = context;
@@ -75,7 +77,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(queryTableReader);
     }
 
-    //
+    // méthode pour insérer un livre dans la table livre
     public void insertBook(String AUTHORSname, String EDITORSname, String TITLEname) {
 
         //
@@ -101,6 +103,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    // méthode pour insérer un lecteur dans la table lecteur
     public void insertReader(String Firstname, String Lastname, String Email) {
 
         //
@@ -126,17 +129,30 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    // méthode pour supprimer les tables si les tables existent déjà
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        // Cette méthode est appelée pour vérifier si les tables existent déjà
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_LIVRE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_LECTEUR);
         onCreate(db);
     }
 
+    //
     public Cursor ReadDataBook(){
         String query = "SELECT * FROM " + TABLE_NAME_LIVRE;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
+    //
+    public Cursor ReadDataReader(){
+        String query = "SELECT * FROM " + TABLE_NAME_LECTEUR;
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;

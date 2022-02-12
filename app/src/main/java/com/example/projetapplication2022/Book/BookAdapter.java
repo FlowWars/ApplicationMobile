@@ -1,4 +1,4 @@
-package com.example.projetapplication2022;
+package com.example.projetapplication2022.Book;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.projetapplication2022.R;
 
 import java.util.ArrayList;
 
@@ -52,7 +54,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookHolder> {
         public BookHolder(@NonNull View itemView) {
             super(itemView);
 
-            textViewIdentifiant = itemView.findViewById(R.id.id_textView_identifiant);
+            textViewIdentifiant = itemView.findViewById(R.id.id_textView_identifiantBook);
             textViewTitle = itemView.findViewById(R.id.id_textView_title);
             textViewAuthor = itemView.findViewById(R.id.id_textView_author);
             textViewEditor = itemView.findViewById(R.id.id_textView_editor);

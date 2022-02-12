@@ -1,4 +1,4 @@
-package com.example.projetapplication2022;
+package com.example.projetapplication2022.Book;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,12 +8,15 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.projetapplication2022.Book.BookAdapter;
+import com.example.projetapplication2022.DBHandler;
+import com.example.projetapplication2022.R;
+
 import java.util.ArrayList;
 
 public class DisplayListBookActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewBook;
-
     private DBHandler db;
     private ArrayList<String> id_book, title_book, author_book, editor_book;
     private BookAdapter bookAdapter;
