@@ -12,4 +12,5 @@
     <string name="editTextFirstname">Prenom</string>
     <string name="editTextLastname">Nom</string>
     <string name="editTextEmail">Email</string>
+    <string name="TextViewIdentifiant">Identifiant</string>
 </resources>

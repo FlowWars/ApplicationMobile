@@ -6,16 +6,59 @@
     android:layout_height="match_parent"
     tools:context=".DisplayListBookActivity">
 
+    <TextView
+        android:id="@+id/id_textView_columNameIdentifiant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="13dp"
+        android:text="@string/TextViewIdentifiant"
+        app:layout_constraintBottom_toTopOf="@+id/id_recyclerView_book"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/id_textView_columNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="2dp"
+        android:text="@string/editTextTitle"
+        app:layout_constraintBottom_toTopOf="@+id/id_recyclerView_book"
+        app:layout_constraintStart_toEndOf="@+id/id_textView_columNameIdentifiant"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/id_textView_columNameAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/editTextAuthor"
+        app:layout_constraintStart_toEndOf="@+id/id_textView_columNameTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/id_textView_columNameEditor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/editTextEditor"
+        app:layout_constraintStart_toEndOf="@+id/id_textView_columNameAuthor"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/id_recyclerView_book"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/id_textView_columNameTitle" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

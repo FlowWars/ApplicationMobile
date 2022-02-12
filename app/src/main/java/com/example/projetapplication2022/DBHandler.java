@@ -2,13 +2,18 @@ package com.example.projetapplication2022;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 
 public class DBHandler extends SQLiteOpenHelper {
 
     // initialisation des variables
     // variable du nom de la base de données
+    private Context context;
     private static final String DB_NAME = "MySQL";
 
     // variable de la version de la base de données
@@ -42,8 +47,9 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String EMAIL = "Email";
 
     // creating a constructor for our database handler.
-    public DBHandler(Context context) {
+    public DBHandler(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+        this.context = context;
     }
 
     //
@@ -84,7 +90,12 @@ public class DBHandler extends SQLiteOpenHelper {
         valuesBook.put(AUTHORS, AUTHORSname);
 
         // Ajout des valeurs dans la table livre
-        db.insert(TABLE_NAME_LIVRE, null, valuesBook);
+        long res = db.insert(TABLE_NAME_LIVRE, null, valuesBook);
+        if(res == -1){
+            Toast.makeText(context, "Echec", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Insertion effectuée", Toast.LENGTH_SHORT).show();
+        }
 
         // deconnexion de la base de données
         db.close();
@@ -104,7 +115,12 @@ public class DBHandler extends SQLiteOpenHelper {
         valuesReader.put(EMAIL, Email);
 
         // Ajout des valeurs dans la table lecteur
-        db.insert(TABLE_NAME_LECTEUR, null, valuesReader);
+        long res = db.insert(TABLE_NAME_LECTEUR, null, valuesReader);
+        if(res == -1){
+            Toast.makeText(context, "Echec", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Insertion effectuée", Toast.LENGTH_SHORT).show();
+        }
 
         // deconnexion de la base de données
         db.close();
@@ -117,5 +133,16 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_LIVRE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_LECTEUR);
         onCreate(db);
+    }
+
+    public Cursor ReadDataBook(){
+        String query = "SELECT * FROM " + TABLE_NAME_LIVRE;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
     }
 }
