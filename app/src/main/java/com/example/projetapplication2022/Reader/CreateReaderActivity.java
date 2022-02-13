@@ -15,6 +15,7 @@ public class CreateReaderActivity extends AppCompatActivity {
 
     private EditText edt_firstname, edt_lastname, edt_email;
     private String firstname, lastname, email;
+    private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,10 @@ public class CreateReaderActivity extends AppCompatActivity {
         // Vérification des champs
         if(firstname.isEmpty() || lastname.isEmpty() || email.isEmpty()){
             Toast.makeText(this, "champ(s) vide(s)", Toast.LENGTH_SHORT).show();
-        }else{
+        }else if(email.trim().matches(emailPattern) == false){
+            Toast.makeText(this, "email invalide", Toast.LENGTH_SHORT).show();
+        }
+        else{
             Intent mainActivity = new Intent(this, MainActivity.class);
             Bundle bundleReader = new Bundle();
             bundleReader.putString("cle_firstname", firstname);
