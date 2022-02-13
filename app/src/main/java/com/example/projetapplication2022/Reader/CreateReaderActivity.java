@@ -25,8 +25,10 @@ public class CreateReaderActivity extends AppCompatActivity {
         edt_email = findViewById(R.id.id_editTextEmail);
     }
 
+    // méthode qui insère les valeurs des editText dans un bundle et l'envoie dans le mainActivity
     public void onClickValidCreateReader(View view) {
 
+        // initialisation des valeurs
         firstname = edt_firstname.getText().toString();
         lastname = edt_lastname.getText().toString();
         email = edt_email.getText().toString();
@@ -37,6 +39,7 @@ public class CreateReaderActivity extends AppCompatActivity {
         bundleReader.putString("cle_lastname", lastname);
         bundleReader.putString("cle_email", email);
 
+        // envoie du bundle et démarrage du mainActivity
         mainActivity.putExtras(bundleReader);
         startActivity(mainActivity);
     }

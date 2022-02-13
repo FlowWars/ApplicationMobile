@@ -28,23 +28,28 @@ public class DisplayListReaderActivity extends AppCompatActivity {
 
         this.recyclerViewReader=findViewById(R.id.id_recyclerView_reader);
 
+        // instanciation des listes et de la base de données
         db = new DBHandler(this);
         id_reader = new ArrayList<>();
         firstname_reader = new ArrayList<>();
         lastname_reader = new ArrayList<>();
         email_reader = new ArrayList<>();
 
+        // appel de la méthode
         storeDataReader();
 
+        // instanciation de l'adaptateur et met a jour le recyclerView
         readerAdapter = new ReaderAdapter(this, id_reader, firstname_reader, lastname_reader, email_reader);
         recyclerViewReader.setAdapter(readerAdapter);
         recyclerViewReader.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    // méthode qui stocke les données de la table lecteur dans les listes respectives
     void storeDataReader(){
 
         Cursor cursor = db.ReadDataReader();
         if(cursor.getCount() == 0){
+            // message si la table est vide
             Toast.makeText(this, "Table vide", Toast.LENGTH_SHORT).show();
         }else{
             while(cursor.moveToNext()){

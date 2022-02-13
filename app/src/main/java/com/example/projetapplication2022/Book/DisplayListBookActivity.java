@@ -28,23 +28,28 @@ public class DisplayListBookActivity extends AppCompatActivity {
 
         this.recyclerViewBook=findViewById(R.id.id_recyclerView_book);
 
+        // instanciation des listes et de la base de données
         db = new DBHandler(this);
         id_book = new ArrayList<>();
         title_book = new ArrayList<>();
         author_book = new ArrayList<>();
         editor_book = new ArrayList<>();
 
+        // appel de la méthode
         storeDataBook();
 
+        // instanciation de l'adaptateur et met a jour le recyclerView
         bookAdapter = new BookAdapter(this, id_book, title_book, author_book, editor_book);
         recyclerViewBook.setAdapter(bookAdapter);
         recyclerViewBook.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    // méthode qui stocke les données de la table livre dans les listes respectives
     void storeDataBook(){
 
         Cursor cursor = db.ReadDataBook();
         if(cursor.getCount() == 0){
+            // message si la table est vide
             Toast.makeText(this, "Table vide", Toast.LENGTH_SHORT).show();
         }else{
             while(cursor.moveToNext()){

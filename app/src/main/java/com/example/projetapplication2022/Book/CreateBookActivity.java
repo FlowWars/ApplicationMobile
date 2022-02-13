@@ -27,8 +27,10 @@ public class CreateBookActivity extends AppCompatActivity {
         edt_editor = findViewById(R.id.id_editTextEditor);
     }
 
+    // méthode qui insère les valeurs des editText dans un bundle et l'envoie dans le mainActivity
     public void onClickValidCreateBook(View view) {
 
+        // initialisation des valeurs
         title = edt_title.getText().toString();
         author = edt_author.getText().toString();
         editor = edt_editor.getText().toString();
@@ -39,6 +41,7 @@ public class CreateBookActivity extends AppCompatActivity {
         bundleBook.putString("cle_author", author);
         bundleBook.putString("cle_editor", editor);
 
+        // envoie du bundle et démarrage du mainActivity
         mainActivity.putExtras(bundleBook);
         startActivity(mainActivity);
     }

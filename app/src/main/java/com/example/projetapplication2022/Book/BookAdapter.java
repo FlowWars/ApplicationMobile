@@ -18,6 +18,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookHolder> {
     private ArrayList id_book, title_book, author_book, editor_book;
     private Context context;
 
+    // Constructeur de la classe
     BookAdapter(Context context, ArrayList id_book, ArrayList title_book, ArrayList author_book, ArrayList editor_book){
         this.context = context;
         this.id_book = id_book;
@@ -26,6 +27,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookHolder> {
         this.editor_book = editor_book;
     }
 
+    // créer un nouveau RecyclerView.ViewHolder
     @NonNull
     @Override
     public BookHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,6 +36,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookHolder> {
         return new BookHolder(view);
     }
 
+    // configure les champs privés à utiliser par RecyclerView.
     @Override
     public void onBindViewHolder(@NonNull BookHolder holder, int position) {
         holder.textViewIdentifiant.setText(String.valueOf(id_book.get(position)));
@@ -42,15 +45,18 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookHolder> {
         holder.textViewEditor.setText(String.valueOf(editor_book.get(position)));
     }
 
+    // Retourne le nombre total d'éléments dans l'ensemble de données détenu par l'adaptateur.
     @Override
     public int getItemCount() {
         return id_book.size();
     }
 
+    // Classe Holder
     public class BookHolder extends RecyclerView.ViewHolder {
 
         private TextView textViewIdentifiant, textViewTitle, textViewAuthor, textViewEditor;
 
+        // constructeur de la classe
         public BookHolder(@NonNull View itemView) {
             super(itemView);
 

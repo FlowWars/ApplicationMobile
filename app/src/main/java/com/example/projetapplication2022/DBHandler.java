@@ -48,13 +48,13 @@ public class DBHandler extends SQLiteOpenHelper {
     // variable de la colonne email
     private static final String EMAIL = "Email";
 
-    //
+    // Constructeur
     public DBHandler(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         this.context = context;
     }
 
-    //
+    // méthode pour créer les tables livre et lecteur
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -80,18 +80,18 @@ public class DBHandler extends SQLiteOpenHelper {
     // méthode pour insérer un livre dans la table livre
     public void insertBook(String AUTHORSname, String EDITORSname, String TITLEname) {
 
-        //
+        // Ouvre la base de données qui sera utilisé pour l'écriture des données
         SQLiteDatabase db = this.getWritableDatabase();
 
-        //
+        // Créer un ensemble vide de valeurs en utilisant la taille initiale par défaut
         ContentValues valuesBook = new ContentValues();
 
-        //
+        // Ajoute les valeurs respectives dans l'ensemble valuesBook
         valuesBook.put(EDITORS, EDITORSname);
         valuesBook.put(TITLE, TITLEname);
         valuesBook.put(AUTHORS, AUTHORSname);
 
-        // Ajout des valeurs dans la table livre
+        // Insertion des valeurs dans la table livre
         long res = db.insert(TABLE_NAME_LIVRE, null, valuesBook);
         if(res == -1){
             Toast.makeText(context, "Echec", Toast.LENGTH_SHORT).show();
@@ -106,13 +106,13 @@ public class DBHandler extends SQLiteOpenHelper {
     // méthode pour insérer un lecteur dans la table lecteur
     public void insertReader(String Firstname, String Lastname, String Email) {
 
-        //
+        // Ouvre la base de données qui sera utilisé pour l'écriture des données
         SQLiteDatabase db = this.getWritableDatabase();
 
-        //
+        // Créer un ensemble vide de valeurs en utilisant la taille initiale par défaut
         ContentValues valuesReader = new ContentValues();
 
-        //
+        // Ajoute les valeurs respectives dans l'ensemble valuesReader
         valuesReader.put(FIRSTNAME, Firstname);
         valuesReader.put(LASTNAME, Lastname);
         valuesReader.put(EMAIL, Email);
@@ -138,7 +138,7 @@ public class DBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    //
+    // méthode pour récupérer toutes les données de la table livre
     public Cursor ReadDataBook(){
         String query = "SELECT * FROM " + TABLE_NAME_LIVRE;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -150,7 +150,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return cursor;
     }
 
-    //
+    // méthode pour récupérer toutes les données de la table lecteur
     public Cursor ReadDataReader(){
         String query = "SELECT * FROM " + TABLE_NAME_LECTEUR;
         SQLiteDatabase db = this.getReadableDatabase();
