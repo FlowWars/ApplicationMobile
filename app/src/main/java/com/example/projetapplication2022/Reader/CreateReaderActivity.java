@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.projetapplication2022.MainActivity;
 import com.example.projetapplication2022.R;
@@ -33,14 +34,20 @@ public class CreateReaderActivity extends AppCompatActivity {
         lastname = edt_lastname.getText().toString();
         email = edt_email.getText().toString();
 
-        Intent mainActivity = new Intent(this, MainActivity.class);
-        Bundle bundleReader = new Bundle();
-        bundleReader.putString("cle_firstname", firstname);
-        bundleReader.putString("cle_lastname", lastname);
-        bundleReader.putString("cle_email", email);
+        // Vérification des champs
+        if(firstname.isEmpty() || lastname.isEmpty() || email.isEmpty()){
+            Toast.makeText(this, "champ(s) vide(s)", Toast.LENGTH_SHORT).show();
+        }else{
+            Intent mainActivity = new Intent(this, MainActivity.class);
+            Bundle bundleReader = new Bundle();
+            bundleReader.putString("cle_firstname", firstname);
+            bundleReader.putString("cle_lastname", lastname);
+            bundleReader.putString("cle_email", email);
 
-        // envoie du bundle et démarrage du mainActivity
-        mainActivity.putExtras(bundleReader);
-        startActivity(mainActivity);
+            // envoie du bundle et démarrage du mainActivity
+            mainActivity.putExtras(bundleReader);
+            startActivity(mainActivity);
+        }
+
     }
 }

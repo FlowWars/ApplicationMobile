@@ -35,14 +35,20 @@ public class CreateBookActivity extends AppCompatActivity {
         author = edt_author.getText().toString();
         editor = edt_editor.getText().toString();
 
-        Intent mainActivity = new Intent(this, MainActivity.class);
-        Bundle bundleBook = new Bundle();
-        bundleBook.putString("cle_title", title);
-        bundleBook.putString("cle_author", author);
-        bundleBook.putString("cle_editor", editor);
+        // Vérification des champs
+        if(title.isEmpty() || author.isEmpty() || editor.isEmpty()){
+            Toast.makeText(this, "champ(s) vide(s)", Toast.LENGTH_SHORT).show();
+        }else{
+            Intent mainActivity = new Intent(this, MainActivity.class);
+            Bundle bundleBook = new Bundle();
+            bundleBook.putString("cle_title", title);
+            bundleBook.putString("cle_author", author);
+            bundleBook.putString("cle_editor", editor);
 
-        // envoie du bundle et démarrage du mainActivity
-        mainActivity.putExtras(bundleBook);
-        startActivity(mainActivity);
+            // envoie du bundle et démarrage du mainActivity
+            mainActivity.putExtras(bundleBook);
+            startActivity(mainActivity);
+        }
+
     }
 }

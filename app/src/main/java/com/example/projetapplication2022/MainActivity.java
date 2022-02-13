@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
             // Appel de la méthode insertReader
             databaseManager.insertReader(firstname, lastname, email);
         }
-
         databaseManager.close();
     }
 
